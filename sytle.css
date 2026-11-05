@@ -1,0 +1,113 @@
+/* Styling chung */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #dedede;
+    margin: 0;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Mobile View (Mobile-First: Không dùng media query cho Mobile) */
+/* Grid 1 cột với gap 10px giữa hàng và cột */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+figure {
+    margin: 0;
+    padding: 10px;
+    border: 2px solid #ccc;
+    background-color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+}
+
+figure img {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+
+/* Tablet View (Kích hoạt từ 772px) */
+@media screen and (min-width: 772px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Bo tròn figure thành hình tròn */
+    figure {
+        border-radius: 50%;
+    }
+
+    /* Figure cuối cùng chiếm 2 cột */
+    figure:last-child {
+        grid-column: span 2;
+    }
+}
+
+
+/* Large Screen View (Kích hoạt từ 992px) */
+@media screen and (min-width: 992px) {
+    /* Reset cấu hình của last-child ở tablet */
+    figure:last-child {
+        grid-column: auto;
+    }
+
+    /* Mỗi figure thứ 3 (every third figure) chiếm 2 cột */
+    figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+
+    /* Bỏ border-radius của tất cả figure (Không dùng max-width) */
+    figure {
+        border-radius: 0;
+    }
+}
+
+
+/* Media query dành cho prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+
+/* Media query dành cho Dark mode (giao diện tối) */
+@media (prefers-color-scheme: dark) {
+    figure {
+        background-color: #222222; /* Màu nền tối */
+        color: #fffdd0;             /* Màu chữ sáng ngả vàng (Cream/Creamy white) */
+        border-color: #000000;     /* Màu viền đen */
+    }
+}
